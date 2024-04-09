@@ -7,7 +7,7 @@ export async function GET(req, {params}) {
 }
 
 export async function POST(req, res) {
-    const data = await req.body
+    const data = await req.json()
     console.log(JSON.stringify(data))
 
     return NextResponse.json(data)

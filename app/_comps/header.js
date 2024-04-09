@@ -7,7 +7,7 @@ export default function Header() {
     <Navbar className="bg-[#43d93d]">
       <NavbarContent className="flex flex-row !justify-between w-full">
         <Link href="/">Home</Link>
-        <p>Brand Name</p>
+        <p className="font-bold text-2xl">Omar stores</p>
         <Link href="/cart">Cart</Link>
       </NavbarContent>
     </Navbar>
