@@ -10,7 +10,7 @@ export default function Page() {
     fetch("/api/products/all")
       .then((res) => res.json())
       .then((data) => setData(data));
-  }, []);
+    }, []);
 
   const sections = useRef(null);
   return (

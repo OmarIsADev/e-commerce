@@ -8,6 +8,8 @@ export async function GET() {
     snapshot.forEach(doc => {
         data.push({id: doc.id, ...doc.data()})
     })
+
+    console.log(process.env.FIREBASE_API_KEY)
     
     return NextResponse.json(data)
 }

@@ -6,12 +6,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
+  apiKey: "AIzaSyABCg5MAf64vMJx6GvGvf39PRxDwgNsk3c",
   authDomain: "omar-stores.firebaseapp.com",
   projectId: "omar-stores",
   storageBucket: "omar-stores.appspot.com",
   messagingSenderId: "722633384658",
-  appId: process.env.FIREBASE_APP_ID
+  appId: "1:722633384658:web:1449626cae65079fd6c30b"
 };
 
 // Initialize Firebase
