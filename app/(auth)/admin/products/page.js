@@ -4,7 +4,7 @@ import { Button } from "@nextui-org/react";
 
 export default function Page() {
   const [products, setProducts] = useState();
-//   const [imgs, setImgs] = useState([]);
+  const [img, setImg] = useState();
 
   useEffect(() => {
     fetch("/api/products/all")
@@ -15,11 +15,14 @@ export default function Page() {
   const newProduct = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("data", JSON.stringify({
-      title: e.target.title.value,
-      description: e.target.description.value,
-      price: e.target.price.value,
-    }));
+    formData.append(
+      "data",
+      JSON.stringify({
+        title: e.target.title.value,
+        description: e.target.description.value,
+        price: e.target.price.value,
+      })
+    );
     // for (let i = 0; i < imgs.length; i++) {
     //   formData.append("imgs[]", imgs[i]);
     // }
@@ -31,15 +34,48 @@ export default function Page() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col p-4">
       <label>Products</label>
       <h1>Add product</h1>
-      <form onSubmit={newProduct}>
-        <input type="text" name="title" required/>
-        <input type="text" name="description" required/>
-        <input type="number" min="0" name="price" required/>
-        <input type="file" accept="image/*" name="img" />
-        <input type="submit" value="submit" />
+      <form onSubmit={newProduct} className="grid grid-cols-2 gap-2">
+        <input
+          className="w-full border-b-2 border-b-black"
+          placeholder="title"
+          type="text"
+          name="title"
+          required
+        />
+        <input
+          className="w-full border-b-2 border-b-black"
+          placeholder="price"
+          type="number"
+          min="0"
+          name="price"
+          required
+        />
+        <textarea
+          className="w-full border-2 border-black col-span-2"
+          placeholder="description"
+          type="text"
+          name="description"
+          required
+        />
+        <button className="relative h-auto flex items-center justify-center">
+          <input
+            type="file"
+            accept="image/*"
+            name="img"
+            className="w-full h-full opacity-0 absolute top-0 left-0"
+            onChange={(e) => setImg(e.target.files[0])}
+          />
+          <span className="bg-black text-white text-center py-2 px-4 rounded-md">
+          upload img
+          </span>
+        </button>
+        {img && <img className="h-24" src={URL.createObjectURL(img)} />}
+        <div className="col-span-2 flex justify-center">
+        <input type="submit" value="submit" className="bg-black text-white w-full max-w-96 py-2 px-4 rounded-md" />
+        </div>
       </form>
       <h1>Manage products</h1>
       <div className="flex flex-col">
